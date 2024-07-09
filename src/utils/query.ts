@@ -15,8 +15,11 @@ export const insert = async (query: string, values: any[]): Promise<any> => {
   return await pool.query(query, values);
 };
 
-export const deleteOne = async (query: string, id: string): Promise<any> => {
-  return await pool.query(query, [id]);
+export const deleteOne = async (
+  query: string,
+  value: string[]
+): Promise<any> => {
+  return await pool.query(query, value);
 };
 
 export const updateOne = async (query: string, values: any[]): Promise<any> => {

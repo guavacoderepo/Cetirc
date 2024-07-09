@@ -28,8 +28,9 @@ export class Result<T, E extends Error> {
     return this.value!!;
   }
 
-
   static err<T, E extends Error>(err: E): Result<T, E> {
+    console.log(err);
+
     return new this(undefined as T, err);
   }
 
@@ -37,8 +38,3 @@ export class Result<T, E extends Error> {
     return new this(val);
   }
 }
-
-
-
-
-

@@ -53,6 +53,18 @@ CREATE TABLE IF NOT EXISTS Bank (
 );
 `;
 
+const cardtable: string = `
+CREATE TABLE IF NOT EXISTS Cards (
+    _id VARCHAR(36) NOT NULL UNIQUE PRIMARY KEY,
+    userId VARCHAR(36) NOT NULL,
+    cardNumber VARCHAR(255) NOT NULL,
+    holderName VARCHAR(255) NOT NULL,
+    cvv VARCHAR(255) NOT NULL,
+    expirationDate TIMESTAMP NOT NULL,
+    FOREIGN KEY (userId) REFERENCES Users(_id)
+);
+`;
+
 export const pool = new Pool({
   host: "localhost",
   port: 5432,
@@ -74,6 +86,7 @@ export async function dbconnection() {
       await pool.query(otptable);
       await pool.query(addresstable);
       await pool.query(banktable);
+      await pool.query(cardtable);
 
       console.log("connected...");
     }

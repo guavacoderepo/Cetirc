@@ -38,3 +38,10 @@ export function errorResponse(
     message: err.message,
   });
 }
+
+export function errorres(err: String, res: Response, statusCode: number = 500) {
+  res.status(statusCode).json({
+    status: false,
+    message: err,
+  });
+}

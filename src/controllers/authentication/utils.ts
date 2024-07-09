@@ -7,4 +7,15 @@ export const getalluserQuery: string = `SELECT * FROM Users`;
 
 export const getuserById: string = `SELECT * FROM Users WHERE _id = $1`;
 
-export const userByEmail: string = `SELECT * FROM Users WHERE email = $1 AND password = $2`;
+export const userByEmail: string = `SELECT * FROM Users WHERE email = $1`;
+
+export const updateOtpQuery: string = `UPDATE Users SET isEmailVarify = $1 WHERE _id = $2`;
+
+// otp queries
+
+export const addotpQuery: string = `INSERT INTO Otp (_id, email, expiration, otp)
+    VALUES ($1, $2, $3, $4) RETURNING *`;
+
+export const deleteotpByEmail: string = `DELETE FROM Otp WHERE email = $1`;
+
+export const getOtpEmail: string = `SELECT * FROM Otp WHERE email = $1`;
